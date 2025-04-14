@@ -1,0 +1,10 @@
+docker run -d --name mongodb \
+  --label logging=promtail \
+  --label logging_jobname=containerlogs \
+  --label stackname=docker-monitoring-stack-gpnc \
+  --log-driver json-file \
+  --log-opt max-size=1m \
+  --log-opt max-file=1 \
+  --log-opt tag="{{.Name}}" \
+  --network=monitoring \
+  mongo:latest
